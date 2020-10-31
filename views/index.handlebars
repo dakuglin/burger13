@@ -1,10 +1,57 @@
 
-	<h1>Eat-Da-Burger!</h1>
 
-  <ul>
-    {{#each burgers}}
-      {{#unless devoured}}
-        {{burgers/burger-block devoured=true}}
-      {{/unless}}
-    {{/each}}    
-  </ul>
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      	<h1>Eat-Da-Burger!</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+
+      {{#each burger}}
+        {{#unless devoured}}
+          <p>
+          {{this.id}}. {{this.burger_name}}
+          <button data-burgerid="{{this.id}}" class="devourburger">Devour!</button>
+         </p>
+        {{/unless}}
+      {{/each}}
+
+    </div>
+
+    <div class="col-6">
+      
+      {{#each burger}}
+        {{#if devoured}}
+         <p>
+          {{this.id}}. {{this.burger_name}}
+          <button data-burgerid="{{this.id}}" class="eatburger">Devour!</button>
+          </p> 
+        {{/if}}
+      {{/each}}
+      
+    </div>
+  </div>
+  
+
+  <form>
+      <div class="create-form">
+          <input type="text" class="form-control" id="addburger">
+          <label for="exampleInputPassword1">Enter a burger and click "Submit".</label>
+      </div>
+      <button type="submit" class="btn btn-primary create-form">Submit</button>
+  </form>
+
+
+</div>
+
+
+
+
+
