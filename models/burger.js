@@ -1,60 +1,49 @@
-var orm = require("../config/orm");
+var orm = require("../config/orm.js");
 
 
 // * Also inside `burger.js`, create the code that will call the ORM functions using burger specific input for the ORM.
 
-// var burgerObj = {
+var burger = {
 
-//     selectAll : function(callback) {
-//         orm.selectAll("burgers", function(result) {
-//             console.log(result)
-//             callback(result);
-//         })
-//     },
+    selectAll : function(cb) {
+        orm.selectAll("burgers", function(res) {
+            console.log(res)
+            cb(res);
+        })
+    },
 
-//     // insertOne : function(callback) {
-//     //     orm.insertOne("burgers", function(result) {
-//     //         callback(result);
-//     //     })
-//     // },
+    //variables cols and vals are arrays
+    insertOne : function(cols, vals, cb) {
+        orm.insertOne("burgers", cols, vals, function(res) {
+            cb(res);
+        })
+    },
 
-//     // updateOne : function(callback) {
-//     //     orm.updateOne("burgers", function(result) {
-//     //         callback(result);
-//     //     })
-//     // },
-// }
+    updateOne : function(objColVals, condition, cb) {
+        orm.updateOne("burgers",objColVals,condition, function(res) {
+            cb(res);
+        })
+    },
+}
 
-orm.selectAll("burgers", function(result) {
-    var data = result;
-    console.table(data)
-});
+//export database functions for the controller (burgers_controllers.js)
+module.exports = burger;
 
-orm.insertOne("burgers", "burger_name","Veggie Burger", function(result) {
-    var data = result;
-    console.log("Successfully added new burger!");
+// orm.selectAll("burgers", function(res) {
+//     var data = res;
+//     console.table(data)
+// });
+
+// orm.insertOne("burgers", "burger_name","Veggie Burger", function(res) {
+//     var data = res;
+//     console.log("Successfully added new burger!");
   
-});
+// });
 
-orm.updateOne("burgers", "burger_name", "Double Veggie Burger", 4, function(result) {
-    var data = result;
-    //console.table(data)
-    console.log("Successfully updated burger!");
+// orm.updateOne("burgers", "burger_name", "Double Veggie Burger", 4, function(res) {
+//     var data = res;
+//     //console.table(data)
+//     console.log("Successfully updated burger!");
   
-});
+// });
   
-
-module.exports = orm;
-
-
-
-
-// * Export at the end of the `burger.js` file.
-// var burger = {
-//     selectAll: function(callback) {
-//         orm.selectAll("burgers", (result)=>{
-//             callback(result)
-//             console.log(result)
-//         });
-//     }
-// }

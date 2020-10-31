@@ -1,44 +1,30 @@
-// Dependencies
-// ===========================================================
 var express = require("express");
-var exphbs = require("express-handlebars");
-  
-var app = express(); //create express app instance.
-var PORT = process.env.PORT || 3000; //process.env.PORT lets the port be set by Heroku
 
-//always need, sets up the express app to handle data parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+var PORT = process.env.PORT || 8080;
+
+var app = express();
+
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-//set Handlebars as the default templating engine.
-app.engine("handlebars", exphbs({ defaultLayout: "main" })); //set up handlebars
-app.set("view engine", "handlebars");  //Tell express to use handlebars
+// Parse application body
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// var route = require("./controllers/burgers_controllers");
-// app.use(route);
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
-//start our server so that it can begin listening to client requests.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controllers.js");
+
+app.use(routes);
+
+// Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-    //log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
 
-
-
-
-// var animals = [
-//     {
-//       animalType: "tttttttttttttt",
-//       pet: true,
-//       fierceness: 4
-//     }, {
-//       animalType: "cat",
-//       pet: true,
-//       fierceness: 10
-//     },
-//   ];
-
-app.get("/", function(req, res) {
-    res.render("index");
-});

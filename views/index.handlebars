@@ -1,3 +1,10 @@
-<!-- 4. Output the animalType string, pet boolean and fierceness number to the page. -->
 
+	<h1>Eat-Da-Burger!</h1>
 
+  <ul>
+    {{#each burgers}}
+      {{#unless devoured}}
+        {{burgers/burger-block devoured=true}}
+      {{/unless}}
+    {{/each}}    
+  </ul>
