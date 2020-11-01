@@ -1,16 +1,12 @@
 
-
-
-
-
-
-
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-12">
-      	<h1>Eat-Da-Burger!</h1>
+    <div class="title col-12">
+        <img src="assets/img/burger.png" class="img" alt="Cheeseburger">
+        <h1>Eat-Da-Burger!</h1>
     </div>
-  </div>
+  </div> 
+
   <div class="row">
     <div class="col-6">
 
@@ -18,7 +14,8 @@
         {{#unless devoured}}
           <p>
           {{this.id}}. {{this.burger_name}}
-          <button data-burgerid="{{this.id}}" class="devourburger">Devour!</button>
+          
+          <button type="submit" data-id="{{this.id}}" class="btn btn-primary devourBtn">Devour!</button>
          </p>
         {{/unless}}
       {{/each}}
@@ -31,7 +28,6 @@
         {{#if devoured}}
          <p>
           {{this.id}}. {{this.burger_name}}
-          <button data-burgerid="{{this.id}}" class="eatburger">Devour!</button>
           </p> 
         {{/if}}
       {{/each}}

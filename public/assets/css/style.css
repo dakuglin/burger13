@@ -1,0 +1,37 @@
+
+body {
+    background-color:	#f3cc60;
+}
+
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:17%;
+    height:auto;
+    padding-top:1%;
+} 
+
+h1 {
+  text-align: center;
+  color: red;
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
+.devourBtn{
+    background-color: red;
+}
+
+#burgers .col-6 {
+    font-size: large;
+    color: green;
+}
+
+form {
+    text-align: center;
+    text-align: center;
+    font-size: 25px;
+    padding-top:5px;
+
+}

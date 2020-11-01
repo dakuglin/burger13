@@ -22,7 +22,6 @@ $(function() {
         );
     });
 
-
     $(".change-devoured").on("click", function(e) {
         e.preDefault();
         var id = $(this).data("id");
