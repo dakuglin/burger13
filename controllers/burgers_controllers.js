@@ -1,12 +1,13 @@
 var express = require("express");
+// Middleware, using express router to run inside our controller 
 var router = require('express').Router();
-
-//import the model (burger.js) to use the database functions
+//import the model (burger.js) to use the database functions, separation of concerns 
 var burger = require("../models/burger.js"); 
 
-//create the routes and set up logic within routes 
-router.get("/", function(req, res) {
 
+//routes with logic
+router.get("/", function(req, res) {
+    //call our orm to get the data we need
     burger.selectAll(function(data) {
         var hbsObject = {
             burger: data
@@ -17,6 +18,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
+
     burger.insertOne([
         "burger_name", "devoured"
     ], [
@@ -24,11 +26,11 @@ router.post("/api/burgers", function(req, res) {
     ], function(result) {
         //send back the ID of the new burger
         res.json({id:result.insertId})
-        //res.json(result)
     })
 });
 
 router.put("/api/burgers/:id", function(req, res) {
+
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
