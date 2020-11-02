@@ -36,6 +36,7 @@ app.listen(PORT, function() {
 
   -- a given route is recieved/hit by the server ("/")
   -- the controller is listening and dectects a request on that route
-    | - controller call the cat mode, and requests all data from burgers, it renders all the burgers to the view (via handlebars)
+     - controller call the cat mode, and requests all data from burgers, it renders all the burgers to the view (via handlebars)
+
 
 */
