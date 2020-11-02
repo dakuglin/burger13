@@ -8,21 +8,23 @@
   </div> 
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 center">
+      <h2>Burgers!</h2>
 
       {{#each burger}}
         {{#unless devoured}}
-          <p>
+          <h5 id="burgers">
           {{this.id}}. {{this.burger_name}}
           
-          <button type="submit" data-id="{{this.id}}" class="btn btn-primary devourBtn">Devour!</button>
-         </p>
+          <button type="submit" data-id="{{this.id}}" class="btn btn-primary devourBtn change-devour">Devour!</button>
+         </h5>
         {{/unless}}
       {{/each}}
 
     </div>
 
-    <div class="col-6">
+    <div class="col-6 center">
+      <h2>Devoured Burgers!</h2>
       
       {{#each burger}}
         {{#if devoured}}
@@ -35,15 +37,13 @@
     </div>
   </div>
   
-
   <form>
-      <div class="create-form">
+      <div>
           <input type="text" class="form-control" id="addburger">
           <label for="exampleInputPassword1">Enter a burger and click "Submit".</label>
       </div>
-      <button type="submit" class="btn btn-primary create-form">Submit</button>
+      <button type="submit" class="btn btn-primary create-form" id="addburgerBtn">Submit</button>
   </form>
-
 
 </div>
 

@@ -9,6 +9,8 @@ var burger = {
         orm.selectAll("burgers", function(res) {
             console.log(res)
             cb(res);
+
+           // return res
         })
     },
 
@@ -16,12 +18,14 @@ var burger = {
     insertOne : function(cols, vals, cb) {
         orm.insertOne("burgers", cols, vals, function(res) {
             cb(res);
+            //return res
         })
     },
 
     updateOne : function(objColVals, condition, cb) {
         orm.updateOne("burgers",objColVals,condition, function(res) {
             cb(res);
+            //return res
         })
     },
 }
